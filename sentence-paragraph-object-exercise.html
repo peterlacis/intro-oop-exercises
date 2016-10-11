@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>OOP</title>
+</head>
+<body>
+
+     <h1>Introduction to Object Oriented Programming!</h1>
+     <small>Instructions are  in the code! How exciting!</small>
+    <div id="paragraphs"></div>
+
+	<script>
+
+            // Finish the Following constructor
+
+		function Sentence(wordsArray) {
+			this.wordsArray = wordsArray;
+			
+			this.getWordCount = function() {
+        		//find the amount of words in the sentence
+				return wordsArray.length;
+			};
+			
+			this.getLetterCount = function() {
+    			//find the amount of letters in the sentence
+				var wordsString = wordsArray.join();
+				return (wordsString.length);
+			};
+			
+			this.reverse = function() {
+			// 	//reverse the sentence
+
+				var reverse_array = wordsArray.reverse();
+				return reverse_array;
+			};
+			
+			this.getWordAt = function(i) {
+				//return the word at index i
+
+				JSON.stringify(wordsArray);
+				return(wordsArray[0]);
+			};
+		}
+		
+		/* Some Tests. Make them all pass! */
+		
+		var s = new Sentence(["Hello", "I", "Am", "Computer"]);
+		console.log(s.getWordCount() == 4);
+		console.log(s.getLetterCount() == 19); //remember spaces!
+		console.log(s.getWordAt(0) == "Hello");
+		s.reverse();
+		console.log(s.getWordAt(0) == "Computer");
+
+		 // /*
+		 
+		 // Create a new constructor function for a Paragraph
+		 
+		 // You should be able to
+	 	
+	 	var s2 = new Sentence (["I", "am", "not", "a", "human"]);
+	 	p = new Paragraph ([s, s2]);
+		 
+		 // Implement the following:
+			
+		function Paragraph(pWordsArray) {
+			this.pWordsArray = pWordsArray;
+
+			this.getWordCount = function() {
+				var sum = 0;
+				for (i=0; i < pWordsArray.length; i++) {
+				 	sum = sum + pWordsArray[i].getWordCount();
+				}
+				return sum;
+			};
+		
+			this.getLetterCount = function() {
+				
+				var pString = pWordsArray.join();
+				// console.log(pString.length);
+				return (pString.length);
+			};
+
+			this.getWordAt = function (i) {
+
+				var str = this.pWordsArray[0].wordsArray.join(" ");
+				str += " " + this.pWordsArray[1].wordsArray.join(" ");
+				console.log(str);
+				return(str[i]);
+
+
+
+			};
+
+			this.getSentenceCount = function () {
+				console.log(this.pWordsArray.length);
+
+				return this.pWordsArray.length;
+
+			};
+		
+			this.addToHTML = function (idname) {
+				var str = this.pWordsArray[0].wordsArray.join(" ");
+				str += " " + this.pWordsArray[1].wordsArray.join(" ");
+				document.getElementById(idname).innerText = str
+
+
+			};
+		}		
+
+ /*
+
+		 Create a new constructor function for a Paragraph
+
+	
+
+		 Implement the following, including writing tests for them.
+			p.getWordCount();
+			p.getLetterCount();
+			p.getWordAt(10);
+			p.getSentenceCount();
+			p.addToHTML("paragraphs");
+
+	*/
+
+		console.log(p.getWordCount() == 9);
+		console.log(p.getLetterCount() == 31);
+		console.log(p.getWordAt(10));
+		console.log(p.getSentenceCount() == 2);
+		console.log(p.addToHTML("paragraphs"));
+
+	
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
